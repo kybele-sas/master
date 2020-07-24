@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Rent Chain</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+
+  .navbar a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: #f44336;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  #sign {
+    float: right;
+    padding-right: 20px;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .w3-light-grey {
+    background-color: #fff !important;
+  }
+
+  .w3-red {
+    padding: 30px 16px !important;
+  }
+
+  .footerRentChain {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    text-align: center;
+    border-top: #333 1px solid;
+  }
+</style>
+
+<body>
+  <div class="navbar">
+    <a href="home">Home</a>
+    <a href="nodeCommand">Node</a>
+    <a href="data">Data</a>
+  </div>
+
+  <!-- Header -->
+  <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">RentChain</h1>
+    <p class="w3-xlarge">Save the planet, ride a bike!</p>
+    <a href="nodeCommand">
+      <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Control Your Node</button>
+    </a>
+  </header>
+
+  <!-- First Grid -->
+  <div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-twothird">
+        <h1>About Rentchain</h1>
+        <h5 class="w3-padding-32">RentChain is a bike renting platform which provides its services all over the world.
+          Main advantage of the RentChain is its ability to connect bike owners and bike enthusiasts in a few clicks.
+          RentChain provides users with available bikes and provides reviews of bikes for a better user experience.
+          Every bike owner can publish their bike so other users can see its condition and reviews and later on rent it.
+        </h5>
+      </div>
+
+      <div class="w3-third w3-center">
+        <img src="https://raw.githubusercontent.com/itucsdb1919/itucsdb1919/test/images/bike_rent.png" border="0"
+          alt="W3Schools" src="logo_w3s.gif" width="300" height="300">
+      </div>
+    </div>
+
+    <!-- Second Grid -->
+    <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+      <div class="w3-content">
+        <div class="w3-third w3-center">
+          <i class="w3-padding-64 w3-text-red w3-margin-right"></i>
+          <img src="https://raw.githubusercontent.com/itucsdb1919/itucsdb1919/test/images/bike_planet.png" border="0"
+            alt="W3Schools" src="logo_w3s.gif" width="300" height="300" style="margin-right: 50px;">
+        </div>
+
+        <div class="w3-twothird">
+          <h1>Save the planet, ride a bike!</h1>
+          <h5 class="w3-padding-32">With emerging global warming concerns we wanted to help saving the planet using our
+            project. Riding a bike can siginificantly decrease carbon footprint but not everyone have a bike, so
+            RentChain helps with this issue: users with no bikes can rent them from bicycle owners within their city.
+            This way bike owners can monetize ownership of the bicycle while helping our planet.</h5>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footerRentChain">
+      <div>
+        <a style="text-decoration: none;" href="https://github.com/itucsdb1919/itucsdb1919"><i
+            style="margin-left: 10px;" class="fa fa-github"></i>
+          Github</a>
+        <a style="text-decoration: none;" href="mailto:info@rentchain.com"><i style="margin-left: 10px;"
+            class="fa fa-envelope"></i> e-mail</a>
+        <a style="text-decoration: none;" href="https://www.linkedin.com/in/rentchain"><i style="margin-left: 10px;"
+            class="fa fa-linkedin"></i>
+          LinkedIn</a>
+          <a style="text-decoration: none;" href="help"><i style="margin-left: 10px;"
+            class="fa fa-question-circle"></i>
+          Support</a>
+
+      </div>
+    </footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Rent Chain</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: #f44336;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  #sign {
+    float: right;
+    padding-right: 20px;
+
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto 0 auto;
+    width: 100%;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+    background-color: #f44336;
+  }
+
+  p {
+    font-size: 12px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    color: #525252;
+  }
+
+  .box {
+    background: white;
+    width: 400px;
+    border-radius: 6px;
+    margin: 0 auto 0 auto;
+    margin-top: 3%;
+    padding: 0px 0px 0px 0px;
+    border: #636363 4px solid;
+  }
+
+  .email {
+    background: #ecf0f1;
+    border: #ccc 1px solid;
+    border-bottom: #ccc 2px solid;
+    padding: 8px;
+    width: 250px;
+    color: #AAAAAA;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 4px;
+  }
+
+  .password {
+    border-radius: 4px;
+    background: #ecf0f1;
+    border: #ccc 1px solid;
+    padding: 8px;
+    width: 250px;
+    font-size: 1em;
+  }
+
+  .btn1 {
+    background: #333;
+    width: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border-radius: 4px;
+    border: #27ae60 1px solid;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 800;
+    font-size: 0.8em;
+  }
+
+  .btn1:hover {
+    background: rgb(29, 29, 29);
+  }
+
+  #btn2 {
+    float: left;
+    background: #3498db;
+    width: 125px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    border-radius: 4px;
+    border: #2980b9 1px solid;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-weight: 800;
+    font-size: 0.8em;
+  }
+
+  #btn2:hover {
+    background: #3594D2;
+  }
+  
+  
+</style>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <a href="home">Home</a>
+    <a href="nodeCommand">Node</a>
+    <a href="data">Data</a>
+  </div>
+
+
+  <div class="container-form">
+    <form action="{{ url_for('nodeCommand_page') }}" method="POST">
+      <div class="box">
+        <h1><b>Node Actions</b></h1>
+        <div class="form-group">
+          <div class="form-group">
+            <label for="node">Choose a node:</label>
+            <select name="node" id="node" class="form-control email">
+              <option value="node_1">Node 1</option>
+              <option value="node_2">Node 2</option>
+              <option value="node_3">Node 3</option>
+            </select>
+          </div>
+          <div class="form-group ">
+            <label for="fan">Fan state: </label>
+            <input type="checkbox" class="form-control email" name="fan">
+          </div>
+          <div class="form-group">
+            <label for="lamp">lamp state: </label>
+            <input type="checkbox" class="form-control email" name="lamp">
+          </div>
+          <div class="form-group">
+            <label for="roof">roof state: </label>
+            <input type="checkbox" class="form-control email" name="roof">
+          </div>
+          <div class="form-group">
+            <label for="water">water state: </label>
+            <input type="checkbox" class="form-control email" name="water">
+          </div>
+          <div class="form-group">
+            <button class="btn1 btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</body>
+
+</html>
