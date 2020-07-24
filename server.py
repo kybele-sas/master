@@ -40,14 +40,11 @@ def home_page():
 
 @app.route("/data", methods=['GET','POST'])
 def data_page():
-    node=1
     if request.method == "GET":
-        dataSQL = "Select * from public.node_" + str(node) + " ORDER BY id DESC LIMIT 10"
-        datas = executeSQL(dataSQL, "select")
-        return render_template("data.html", datas = datas)
+        return render_template("data.html")
     if request.method == "POST":
         node = request.form['node_id']
-        dataSQL = "Select * from public.node_" + str(node) + " ORDER BY id DESC LIMIT 10"
+        dataSQL = "Select * from public.node_" + node + " ORDER BY id DESC LIMIT 10"
         datas = executeSQL(dataSQL, "select")
         return render_template("data.html", datas = datas)
 
