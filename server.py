@@ -8,7 +8,7 @@ def executeSQL(sqlCode,operation):
     try:
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        url = os.getenv("DATABASE_URL")
+        url = os.getenv("HEROKU_POSTGRESQL_BLUE_URL")
         connection = dbapi2.connect(url)
         cursor = connection.cursor()
         
