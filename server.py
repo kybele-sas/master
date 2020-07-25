@@ -1,14 +1,20 @@
-from flask import Flask,render_template,request, redirect, url_for, session,flash
+from flask import Flask,render_template,request, redirect, url_for, session,flash,Response
 import psycopg2 as dbapi2
 from datetime import datetime
 import os
+import io
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 
 def executeSQL(sqlCode,operation):
     try:
         # connect to the PostgreSQL server
         print('Connecting to the PostgreSQL database...')
-        url = os.getenv("DATABASE_URL")
+        url = os.getenv("HEROKU_POSTGRESQL_BLUE_URL")
         connection = dbapi2.connect(url)
         cursor = connection.cursor()
         
@@ -29,24 +35,57 @@ def executeSQL(sqlCode,operation):
     except (Exception, dbapi2.Error) as error:
         print("Error while connecting to PostgreSQL", error)
 
+
 app = Flask(__name__)
 app.secret_key = "super secret key"
 
+gFeature = "temparature"
+gNode = "1"
 
 @app.route("/")
 @app.route("/home")
 def home_page():
     return render_template("homepage.html")
 
+@app.route('/plot.png')
+def plot_png():
+    global gFeature
+    global gNode
+    graphSQL = "select id, " + gFeature + " from node_" + gNode + " ORDER BY id DESC LIMIT 60"
+    graphData = executeSQL(graphSQL, "select")
+    arr = np.array(graphData)
+    t = arr[:,0]
+    s = arr[:,1]
+
+    fig, ax = plt.subplots()
+    ax.plot(t, s)
+    if gFeature == "temparature":
+        gFeature = "temperature"
+
+    ymin = np.min(s)
+    ymax = np.max(s)
+    ax.set(xlabel='time',title="Node " + gNode +" "+ gFeature)
+    ax.set_ylim([ymin -25,ymax + 25])
+    ax.grid()
+    plt.gcf().autofmt_xdate()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
 @app.route("/data", methods=['GET','POST'])
 def data_page():
     if request.method == "GET":
-        return render_template("data.html")
+        graphCheck = False
+        return render_template("data.html",graphCheck = graphCheck)
     if request.method == "POST":
-        node = request.form['node_id']
-        dataSQL = "Select * from public.node_" + node + " ORDER BY id DESC LIMIT 10"
+        graphCheck = True
+        global gNode
+        global gFeature
+        gNode = request.form['node_id']
+        gFeature = request.form['feature']
+        dataSQL = "Select * from public.node_" + gNode + " ORDER BY id DESC LIMIT 10"
         datas = executeSQL(dataSQL, "select")
-        return render_template("data.html", datas = datas)
+        return render_template("data.html", datas = datas, graphCheck = graphCheck)
 
 @app.route("/nodeCommand", methods=['GET','POST'])
 def nodeCommand_page():

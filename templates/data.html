@@ -126,7 +126,9 @@
             <a href="nodeCommand">Node</a>
             <a href="data">Data</a>
         </div>
-
+        {% if graphCheck %}
+        <img src=/plot.png>
+        {% endif %}
         <div style="float: left; margin-right: 15px; margin-left: 5px; margin-top: 45px;">
             <form action=" " , method="post">
               Node<br>
@@ -136,11 +138,19 @@
                 <option value="3">Node 3</option>
               </select>
               <br>
-              <button class="btn1 btn-primary" type="submit">Filter</button>
+              Feature<br>
+              <select name="feature">
+                <option value="temparature">Temperature</option>
+                <option value="moist">Air Moist</option>
+                <option value="lux">Light Intensity</option>
+                <option value="smoist">Soil Moist</option> 
+              </select>
+              <br>
+              <button class="btn1 btn-primary" type="submit">Plot</button>
             </form>
         </div>
 
-        <div class="table-div">
+        <div class="table-div" style = "float: right">
             <div class="w3-content">
             <div class="w3-twothird">
                 <table class="w3-table-all">
